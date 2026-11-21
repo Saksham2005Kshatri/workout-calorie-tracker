@@ -1,0 +1,36 @@
+# secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.p8
+*.p12
+*.key
+*.jks
+*.mobileprovision
+
+# node / expo
+node_modules/
+.expo/
+dist/
+web-build/
+npm-debug.*
+yarn-error.*
+*.tsbuildinfo
+app/ios/
+app/android/
+
+# supabase local
+supabase/.branches/
+supabase/.temp/
+supabase/functions/.env
+
+# os / editor
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.log
+
+# claude local settings
+.claude/settings.local.json
