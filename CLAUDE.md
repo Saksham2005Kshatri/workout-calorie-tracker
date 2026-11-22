@@ -76,6 +76,7 @@ Source of truth is the EERD plus `docs/data-model.md`. Summary:
 - Timestamps are `timestamptz` in UTC. "Day" boundaries use the user's `timezone`.
 - Logic with real rules (BMR, calorie targets, daily rollups, overload comparison) lives in pure functions with unit tests, not inside components.
 - Keep components small; screens fetch via TanStack Query hooks, not inline `supabase` calls.
+- Only screens and layouts go in `app/src/app/` (every file there becomes a route). Tests live in `app/src/__tests__/` or next to code outside that folder, never inside it.
 - Conventional commit messages (`feat:`, `fix:`, `chore:`, `docs:`).
 - Work on feature branches and open PRs into `main`; do not push directly to `main` once CI exists.
 

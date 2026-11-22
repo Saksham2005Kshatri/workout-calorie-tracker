@@ -4,12 +4,12 @@ import * as ReactNative from 'react-native';
 
 import { PlaceholderScreen } from '@/components/placeholder-screen';
 import { darkPalette } from '@/theme/tokens';
-import TabsLayout from './_layout';
-import Dashboard from './index';
-import Nutrition from './nutrition';
-import Profile from './profile';
-import Weight from './weight';
-import Workouts from './workouts';
+import TabsLayout from '@/app/(tabs)/_layout';
+import Dashboard from '@/app/(tabs)/index';
+import Nutrition from '@/app/(tabs)/nutrition';
+import Profile from '@/app/(tabs)/profile';
+import Weight from '@/app/(tabs)/weight';
+import Workouts from '@/app/(tabs)/workouts';
 
 const routes = {
   '(tabs)/_layout': TabsLayout,
