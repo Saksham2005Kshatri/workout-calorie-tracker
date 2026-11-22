@@ -15,12 +15,12 @@ Work top to bottom. Each phase ends with a **Done when** check; do not start the
 - **Done when:** `supabase --version`, `eas whoami` and `docker ps` all work, and both Supabase projects exist.
 
 ## Phase 1: App scaffold
-- [ ] Scaffold Expo (TypeScript, Expo Router) inside `app/`
-- [ ] Turn on TypeScript strict; add ESLint and Prettier
-- [ ] Add scripts: `lint`, `typecheck`, `test`; set up Vitest or Jest
-- [ ] Add env loading (`EXPO_PUBLIC_SUPABASE_URL`, `EXPO_PUBLIC_SUPABASE_ANON_KEY`) and `.env.example` entries
-- [ ] Add TanStack Query provider, Zod, and a basic theme (colors, spacing, type)
-- [ ] Add tab navigation skeleton: Dashboard, Workouts, Nutrition, Weight, Profile
+- [x] Scaffold Expo (TypeScript, Expo Router) inside `app/`
+- [x] Turn on TypeScript strict; add ESLint and Prettier
+- [x] Add scripts: `lint`, `typecheck`, `test`; set up Vitest or Jest
+- [x] Add env loading (`EXPO_PUBLIC_SUPABASE_URL`, `EXPO_PUBLIC_SUPABASE_ANON_KEY`) and `.env.example` entries
+- [x] Add TanStack Query provider, Zod, and a basic theme (colors, spacing, type)
+- [x] Add tab navigation skeleton: Dashboard, Workouts, Nutrition, Weight, Profile
 - [ ] Run the app on a real phone via Expo Go
 - **Done when:** the app launches on a phone with empty tabs, and the `app` CI job runs and passes.
 

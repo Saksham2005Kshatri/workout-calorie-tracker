@@ -6,7 +6,7 @@ Repo: https://github.com/Saksham2005Kshatri/workout-calorie-tracker
 
 ## Status
 
-Pre-code. Design is done (flowchart, EERD, stack choice); the app and schema are not yet scaffolded. Build order lives in `docs/TODO.md`: work through it phase by phase, tick items off as they land, and do not start a phase before the previous one's "Done when" passes. Update this section as milestones land.
+Phase 1 in progress: Expo SDK 58 app shell exists in `app/` (five placeholder tabs, env validation, query provider, light/dark theme, lint/typecheck/jest). Database and auth are not started. Remaining Phase 1 items: confirm it opens in Expo Go and get CI green on a PR. Build order lives in `docs/TODO.md`: work through it phase by phase, tick items off as they land, and do not start a phase before the previous one's "Done when" passes. Update this section as milestones land.
 
 ## Stack (decided)
 
@@ -40,7 +40,7 @@ supabase start                 # local Postgres/Auth/Storage in Docker
 supabase db reset              # re-apply all migrations + seed locally
 supabase db push               # apply migrations to the linked remote project
 supabase functions deploy <n>  # deploy one Edge Function
-cd app && npx expo start       # run the app
+cd app && npx expo start       # run the app (needs app/.env, copy from app/.env.example)
 cd app && npm run lint && npm run typecheck && npm test
 eas build --platform android --profile preview
 eas update                     # OTA JS update
