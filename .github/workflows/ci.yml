@@ -35,3 +35,21 @@ jobs:
       - run: npm run lint --if-present
       - run: npm run typecheck --if-present
       - run: npm test --if-present
+
+  database:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: supabase/setup-cli@v3
+        with:
+          version: 3.2.0
+      - name: Start local Supabase (only the services the tests need)
+        run: supabase start -x studio,imgproxy,mailpit,logflare,vector,edge-runtime
+      - name: Rebuild the database from scratch
+        run: supabase db reset
+      - name: Run database tests (RLS, constraints, guards)
+        run: supabase test db
+      - name: Generated types must match the schema
+        run: |
+          supabase gen types --lang typescript --schema public > app/src/lib/database.types.ts
+          git diff --exit-code -- app/src/lib/database.types.ts
