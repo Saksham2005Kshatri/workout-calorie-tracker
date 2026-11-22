@@ -18,4 +18,4 @@ Not scaffolded yet. Planned flow:
 2. `supabase start` for the local backend.
 3. `cd app && npx expo start`.
 
-Copy `.env.example` to `.env` and fill in values. Never commit `.env`.
+In `app/`, copy `.env.example` to `.env` and fill in values. Never commit `.env`.
