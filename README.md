@@ -12,10 +12,10 @@ Built with Expo (React Native) and Supabase. See [CLAUDE.md](CLAUDE.md) for the 
 
 ## Getting started
 
-Not scaffolded yet. Planned flow:
-
 1. Install Docker, Node and the Supabase CLI.
-2. `supabase start` for the local backend.
+2. `supabase start` for the local backend, then `supabase test db` to run the database tests.
 3. `cd app && npx expo start`.
+
+After changing the schema (a new file in `supabase/migrations/`), run `supabase db reset`, `supabase test db`, then `cd app && npm run gen:types` and commit the regenerated types.
 
 In `app/`, copy `.env.example` to `.env` and fill in values. Never commit `.env`.
