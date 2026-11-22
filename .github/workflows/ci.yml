@@ -21,8 +21,6 @@ jobs:
 
   app:
     runs-on: ubuntu-latest
-    # Skips until the Expo app is scaffolded in app/
-    if: hashFiles('app/package.json') != ''
     defaults:
       run:
         working-directory: app
