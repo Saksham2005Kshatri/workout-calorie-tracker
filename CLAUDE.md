@@ -6,7 +6,7 @@ Repo: https://github.com/Saksham2005Kshatri/workout-calorie-tracker
 
 ## Status
 
-Pre-code. Design is done (flowchart, EERD, stack choice); the app and schema are not yet scaffolded. Update this section as milestones land.
+Pre-code. Design is done (flowchart, EERD, stack choice); the app and schema are not yet scaffolded. Build order lives in `docs/TODO.md`: work through it phase by phase, tick items off as they land, and do not start a phase before the previous one's "Done when" passes. Update this section as milestones land.
 
 ## Stack (decided)
 
