@@ -25,17 +25,19 @@ Work top to bottom. Each phase ends with a **Done when** check; do not start the
 - **Done when:** the app launches on a phone with empty tabs, and the `app` CI job runs and passes. (Done: verified in Expo Go; CI green on PR #2.)
 
 ## Phase 2: Database foundation
-- [ ] `supabase init`, link to `workout-dev`, run `supabase start` locally
-- [ ] Migration 1, identity: `users` (profile row linked to `auth.users`), `user_profile`, `auth_identity` plus subtypes if still needed alongside Supabase Auth
-- [ ] Migration 2, workout: `exercise`, `workout_session`, `session_exercise`, `exercise_set`
-- [ ] Migration 3, nutrition: `food_item`, `meal`, `meal_item`
-- [ ] Migration 4, body/summary: `weight_log`, `daily_summary` with the unique constraints
-- [ ] Enable RLS and write policies on every table in the same migration that creates it
-- [ ] Add CHECK constraints (positive weights/reps, valid enums) and indexes on `user_id` + date columns
-- [ ] Seed the exercise library (~100 common lifts with muscle group and equipment)
-- [ ] Write RLS tests: user A cannot read, insert, update or delete user B's rows on any table
-- [ ] Generate TypeScript types from the schema (`supabase gen types`)
-- **Done when:** `supabase db reset` applies everything cleanly and the RLS tests pass.
+- [x] `supabase init`, link to `workout-dev`, run `supabase start` locally
+- [x] Migration 1, identity: `users` (profile row linked to `auth.users`) and `user_profile`; `auth_identity` and subtypes dropped (Supabase Auth owns identities)
+- [x] Migration 2, workout: `exercise`, `workout_session`, `session_exercise`, `exercise_set`
+- [x] Migration 3, nutrition: `food_item`, `meal`, `meal_item`
+- [x] Migration 4, body/summary: `weight_log`, `daily_summary` with the unique constraints
+- [x] Enable RLS and write policies on every table in the same migration that creates it
+- [x] Add CHECK constraints (positive weights/reps, valid enums) and indexes on `user_id` + date columns
+- [x] Seed the exercise library (~100 common lifts with muscle group and equipment)
+- [x] Write RLS tests: user A cannot read, insert, update or delete user B's rows on any table
+- [x] Generate TypeScript types from the schema (`supabase gen types`)
+- [x] CI job that rebuilds the database, runs the tests and checks the generated types for drift
+- [ ] Push the migrations to `workout-dev` (dry run first; never `workout-prod`)
+- **Done when:** `supabase db reset` applies everything cleanly and the RLS tests pass. (Met locally and in CI; the push to `workout-dev` is the last item.)
 
 ## Phase 3: Authentication
 - [ ] Configure Google provider in Supabase (dev project)
