@@ -36,8 +36,8 @@ Work top to bottom. Each phase ends with a **Done when** check; do not start the
 - [x] Write RLS tests: user A cannot read, insert, update or delete user B's rows on any table
 - [x] Generate TypeScript types from the schema (`supabase gen types`)
 - [x] CI job that rebuilds the database, runs the tests and checks the generated types for drift
-- [ ] Push the migrations to `workout-dev` (dry run first; never `workout-prod`)
-- **Done when:** `supabase db reset` applies everything cleanly and the RLS tests pass. (Met locally and in CI; the push to `workout-dev` is the last item.)
+- [x] Push the migrations to `workout-dev` (dry run first; never `workout-prod`)
+- **Done when:** `supabase db reset` applies everything cleanly and the RLS tests pass. (Met locally, in CI, and on `workout-dev`.)
 
 ## Phase 3: Authentication
 - [ ] Configure Google provider in Supabase (dev project)
