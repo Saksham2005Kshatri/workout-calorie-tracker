@@ -53,7 +53,8 @@
     "lint": "expo lint",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
-    "test": "jest"
+    "test": "jest",
+    "gen:types": "cd .. && supabase gen types --lang typescript --schema public > app/src/lib/database.types.ts"
   },
   "private": true
 }

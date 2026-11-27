@@ -7,6 +7,6 @@ module.exports = defineConfig([
   expoConfig,
   prettierRecommended,
   {
-    ignores: ['dist/*', '.expo/*', 'coverage/*'],
+    ignores: ['dist/*', '.expo/*', 'coverage/*', 'src/lib/database.types.ts'],
   },
 ]);

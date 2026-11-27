@@ -6,7 +6,7 @@ Repo: https://github.com/Saksham2005Kshatri/workout-calorie-tracker
 
 ## Status
 
-Phase 1 complete: Expo SDK 58 app shell in `app/` (five placeholder tabs, env validation, query provider, light/dark theme, lint/typecheck/jest), verified in Expo Go, CI green. Next: Phase 2, database foundation (Supabase migrations, RLS, seed data). Database and auth are not started. Build order lives in `docs/TODO.md`: work through it phase by phase, tick items off as they land, and do not start a phase before the previous one's "Done when" passes. Update this section as milestones land.
+Phase 1 complete: Expo SDK 58 app shell in `app/` (five placeholder tabs, env validation, query provider, light/dark theme, lint/typecheck/jest), verified in Expo Go, CI green. Phase 2 complete: full schema with RLS in `supabase/migrations/`, 104 seeded exercises, generated types, and a pgTAP suite run by CI; applied to `workout-dev` (not `workout-prod`). Next: Phase 3, auth. Auth is not started. Build order lives in `docs/TODO.md`: work through it phase by phase, tick items off as they land, and do not start a phase before the previous one's "Done when" passes. Update this section as milestones land.
 
 ## Stack (decided)
 
@@ -37,6 +37,8 @@ Planned; confirm they exist before relying on them.
 
 ```
 supabase start                 # local Postgres/Auth/Storage in Docker
+supabase test db               # pgTAP: RLS, constraints, schema guards (needs supabase start)
+cd app && npm run gen:types    # regenerate app/src/lib/database.types.ts after a schema change
 supabase db reset              # re-apply all migrations + seed locally
 supabase db push               # apply migrations to the linked remote project
 supabase functions deploy <n>  # deploy one Edge Function
@@ -50,9 +52,9 @@ eas update                     # OTA JS update
 
 Source of truth is the EERD plus `docs/data-model.md`. Summary:
 
-- Identity: `USER` 1-1 `USER_PROFILE`; `USER` 1-N `AUTH_IDENTITY` (specialized into `GOOGLE_IDENTITY` / `PHONE_IDENTITY`).
+- Identity: `users` (id = Supabase auth user id) 1-1 `user_profile`. There is no `AUTH_IDENTITY` table: Supabase Auth owns providers and OTP.
 - Workout: `WORKOUT_SESSION` 1-N `SESSION_EXERCISE` N-1 `EXERCISE`; `SESSION_EXERCISE` 1-N `EXERCISE_SET` (weak entity, key `(session_exercise_id, set_no)`). Seeded exercises have `created_by` NULL.
-- Nutrition: `MEAL` 1-N `MEAL_ITEM`; `MEAL_ITEM` optionally references `FOOD_ITEM`. `MEAL_ITEM.source` is `ai` or `user`; `user_confirmed` records the confirm step.
+- Nutrition: `MEAL` 1-N `MEAL_ITEM`; `MEAL_ITEM` optionally references `FOOD_ITEM`. Meal totals come from the `meal_totals` view, never stored. `MEAL_ITEM.source` is `ai` or `user`; `user_confirmed` records the confirm step.
 - Body/summary: `WEIGHT_LOG` (unique `user_id, logged_on`); `DAILY_SUMMARY` (unique `user_id, summary_date`).
 - Progressive overload, previous-performance comparison, weight graph and "vs goal" are computed by queries. Do not add tables for them.
 - `DAILY_SUMMARY` is a snapshot written by a `pg_cron` job at midnight in the user's `timezone`. It copies `calorie_target` so goal changes never rewrite history.
