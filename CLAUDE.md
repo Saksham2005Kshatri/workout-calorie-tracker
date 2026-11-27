@@ -6,7 +6,7 @@ Repo: https://github.com/Saksham2005Kshatri/workout-calorie-tracker
 
 ## Status
 
-Phase 1 complete: Expo SDK 58 app shell in `app/` (five placeholder tabs, env validation, query provider, light/dark theme, lint/typecheck/jest), verified in Expo Go, CI green. Next: Phase 2, database foundation (Supabase migrations, RLS, seed data). Database and auth are not started. Build order lives in `docs/TODO.md`: work through it phase by phase, tick items off as they land, and do not start a phase before the previous one's "Done when" passes. Update this section as milestones land.
+Phase 1 complete: Expo SDK 58 app shell in `app/` (five placeholder tabs, env validation, query provider, light/dark theme, lint/typecheck/jest), verified in Expo Go, CI green. Phase 2 complete: full schema with RLS in `supabase/migrations/`, 104 seeded exercises, generated types, and a pgTAP suite run by CI; applied to `workout-dev` (not `workout-prod`). Next: Phase 3, auth. Auth is not started. Build order lives in `docs/TODO.md`: work through it phase by phase, tick items off as they land, and do not start a phase before the previous one's "Done when" passes. Update this section as milestones land.
 
 ## Stack (decided)
 
