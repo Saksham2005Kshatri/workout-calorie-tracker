@@ -21,8 +21,8 @@ Work top to bottom. Each phase ends with a **Done when** check; do not start the
 - [x] Add env loading (`EXPO_PUBLIC_SUPABASE_URL`, `EXPO_PUBLIC_SUPABASE_ANON_KEY`) and `.env.example` entries
 - [x] Add TanStack Query provider, Zod, and a basic theme (colors, spacing, type)
 - [x] Add tab navigation skeleton: Dashboard, Workouts, Nutrition, Weight, Profile
-- [ ] Run the app on a real phone via Expo Go
-- **Done when:** the app launches on a phone with empty tabs, and the `app` CI job runs and passes.
+- [x] Run the app on a real phone via Expo Go
+- **Done when:** the app launches on a phone with empty tabs, and the `app` CI job runs and passes. (Done: verified in Expo Go; CI green on PR #2.)
 
 ## Phase 2: Database foundation
 - [ ] `supabase init`, link to `workout-dev`, run `supabase start` locally
